@@ -152,7 +152,8 @@ def import_geometry(scene, geometry, settings):
 		#
 		if N:
 			normals = [BlenderVector(no).normalized() for no in N]
-			mesh.use_auto_smooth = True
+			if hasattr(mesh, 'use_auto_smooth'):
+				mesh.use_auto_smooth = True
 			mesh.normals_split_custom_set_from_vertices(normals)
 
 		# texture coords
